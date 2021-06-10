@@ -7,7 +7,6 @@ class LoginController {
     }
 
     async authenticate(req, res, next) {
-        console.log('OIII');
         const { login, password } = req.body;
         const useCase = new AuthenticationUseCase({ tokenService: this.tokenService, userService: this.userService });
         const result = await useCase.execute({ login, password });
@@ -16,6 +15,9 @@ class LoginController {
         } else {
             res.sendStatus(401);
         }
+    }
+    async loadMenus(req,res,next){
+        res.json([{name:"Gerenciar Usuários",path:"/usuarios"}, {name:"Gerenciar Tarefas",path:"/tarefas"}]);
     }
 }
 

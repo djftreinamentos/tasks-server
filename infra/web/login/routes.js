@@ -6,6 +6,11 @@ class LoginRoutes{
                 method:"post",
                 path:"/authenticate",
                 actions:[controller.authenticate]
+            },
+            {
+                method:"get",
+                path:"/menu",
+                actions:[controller.loadMenus]
             }
         ]
     }

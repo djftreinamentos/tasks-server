@@ -6,12 +6,9 @@ class ApplicationController{
     }
 
     async authorize(req,res,next){
-        const authorization = req.headers['Authorization'] || "";
+        const authorization = req.headers['authorization'] || "";
         const path = req.path;
         const token = authorization.replace(/Bearer /, '');
-        console.log(path)
-        console.log(authorization)
-        console.log(req.headers)
         if(path != '/authenticate'){
             const useCase = new AuthorizationUseCase({tokenService:this.tokenService});
             const result = await useCase.execute({token});
