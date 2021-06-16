@@ -4,6 +4,18 @@ let users = [{
     email:"joao@teste.com",
     password:"$2b$15$g6VxU4.QJSRTe3dhV2K0POel7ymg9.7Jve.h7jdg3tKNMK627tsX.",
     roles:["ADMIN"]
+},{
+    id:2,
+    name:"Maria",
+    email:"maria@teste.com",
+    password:"$2b$15$g6VxU4.QJSRTe3dhV2K0POel7ymg9.7Jve.h7jdg3tKNMK627tsX.",
+    roles:["ADMIN","USER"]
+},{
+    id:3,
+    name:"Joana",
+    email:"joana@teste.com",
+    password:"$2b$15$g6VxU4.QJSRTe3dhV2K0POel7ymg9.7Jve.h7jdg3tKNMK627tsX.",
+    roles:["USER"]
 }];
 let NEXTID = 10;
 class UserRepository{

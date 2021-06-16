@@ -1,5 +1,9 @@
 const beforeAll = [...require('../web/application').routes,]
-const routes = [...require('../web/login').routes,]
+const routes = [
+    ...require('../web/login').routes,
+    ...require('../web/menu').routes,
+    ...require('../web/user').routes,
+]
 const afterAll = []
 
 class Router{
@@ -13,6 +17,7 @@ class Router{
             }
         })
         routes.forEach(route =>{
+            console.log(`${route.method} - ${route.path}`);
         app[route.method](route.path,route.actions);
         })
         afterAll.forEach(route =>{

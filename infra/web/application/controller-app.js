@@ -13,7 +13,7 @@ class ApplicationController{
             const useCase = new AuthorizationUseCase({tokenService:this.tokenService});
             const result = await useCase.execute({token});
             if(result){
-                req.currentUser = result;
+                req.currentUser = result.user;
                 next()
             }else{
                 res.sendStatus(401);

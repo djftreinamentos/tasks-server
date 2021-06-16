@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const router = require('./router');
+const {UPLOAD_FOLDER} = require('../utils');
 
 /** Create express app */
 const app = express();
@@ -17,19 +18,10 @@ router.config(api);
 /**apply routes to express */
 app.use('/api/v1', api);
 
-
-// app.post('/api/v1/authenticate',(req,res)=>{
-//     const {login,password} = req.body;
-
-//     if(login === 'bagrinho.teste' && password === '123456'){
-//         res.json({
-//             userName:"Bagrinho",
-//             token:"asdfghjklzxcvbqwerty"
-//         })
-//     }else{
-//         res.sendStatus(401);
-//     }
-// })
+app.get('/resources/:resource',(req,res)=>{
+    const { resource} = req.params;
+    res.sendFile(`${UPLOAD_FOLDER}/${resource}`);
+})
 
 
 module.exports = app;
