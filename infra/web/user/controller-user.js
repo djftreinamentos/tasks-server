@@ -1,8 +1,9 @@
-// const LoadMenuUseCase = require('../../../app/usecase/menu/load-menus');
+const FindAllUsersUseCase = require('../../../app/usecase/user/find-all');
 class UserController {
-    constructor() {
-        // this.permissionService = permissionService;
-        // this.menuService = menuSevice;
+    constructor(permissionService, userService) {
+        this.permissionService = permissionService;
+         this.userService = userService;
+        this.findAll = this.findAll.bind(this);
         this.insert = this.insert.bind(this);
     }
 
@@ -14,12 +15,23 @@ class UserController {
         res.sendStatus(200);
         
     }
+
+    async findAll(req,res,next){
+        const { currentUser} = req;
+        const useCase = new FindAllUsersUseCase({ permissionService: this.permissionService, userService: this.userService });
+        const result = await useCase.execute();
+        if (result) {
+            res.json(result)
+        } else {
+            res.sendStatus(404);
+        }
+    }
    
     
 }
 
-function build(permissionService, menuSevice) {
-    return new UserController();
+function build(permissionService, userService) {
+    return new UserController(permissionService,userService);
 }
 
 module.exports = {
