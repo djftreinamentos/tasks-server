@@ -1,35 +1,34 @@
-const {upload} = require('../../utils');
-class UserRoutes{
+class RolesRoutes{
     
     build(controller){
         return [
             {
                 method:"post",
-                path:"/users",
-                actions:[upload.any(),controller.insert]
+                path:"/roles",
+                actions:[controller.insert]
             },
             {
                 method:"get",
-                path:"/users",
+                path:"/roles",
                 actions:[controller.findAll]
             },
             {
                 method:"get",
-                path:"/users/:id",
+                path:"/roles/:id",
                 actions:[controller.findById]
             },
             {
                 method:"put",
-                path:"/users/:id",
+                path:"/roles/:id",
                 actions:[controller.update]
             },
             {
                 method:"delete",
-                path:"/users/:id",
+                path:"/roles/:id",
                 actions:[controller.remove]
             }
         ]
     }
 }
 
-module.exports = new UserRoutes();
+module.exports = new RolesRoutes();

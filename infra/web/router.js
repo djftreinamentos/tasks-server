@@ -3,6 +3,7 @@ const routes = [
     ...require('../web/login').routes,
     ...require('../web/menu').routes,
     ...require('../web/user').routes,
+    ...require('./role').routes,
 ]
 const afterAll = []
 
