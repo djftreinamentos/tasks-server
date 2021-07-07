@@ -11,21 +11,18 @@ class UpdateUserUseCase{
     async execute(context){
         const id = parseInt(context.id);
         const oldUser = await this.userService.findById(id)
-        if(!olduser){
+        if(!oldUser){
             return false;
         }
-
-        if(oldUser.password != context.password){
-
-        }
         let user = await this.createUser({...context, oldPassword:oldUser.password});
-         result = await this.userService.update(user);
-        return result;
+         const result = await this.userService.update(user);
+        return {ok:result};
     }
     async createUser({id,name,email,password,roles,oldPassword}){
         if (password != oldPassword){
             password = await this.tokenService.generateHash(password);
         }
+        id = parseInt(id);
         return {
             id,
             name,

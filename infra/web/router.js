@@ -4,6 +4,7 @@ const routes = [
     ...require('../web/menu').routes,
     ...require('../web/user').routes,
     ...require('./role').routes,
+    ...require('./task').routes,
 ]
 const afterAll = []
 

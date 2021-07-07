@@ -36,7 +36,7 @@ class UserController {
         const useCase = new UpdateUsersUseCase({ permissionService: this.permissionService, userService: this.userService,tokenService:this.tokenService });
         const result = await useCase.execute({currentUser,id,name,email,password,roles});
         if (result) {
-            res.sendStatus(204)
+            res.json(result)
         } else {
             res.sendStatus(412);
         }
