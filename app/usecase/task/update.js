@@ -18,9 +18,9 @@ class UpdateTaskUseCase{
          const result = await this.taskService.update(task);
         return {ok:result};
     }
-    async createTask({id,title,description,createdAt,duration, predictedTime, history, deliveryForecast,deliveredAt,status,user,type}){
+    async createTask({id,title,description, priority,planningType, createdAt,duration, predictedTime, history, deliveryForecast,deliveredAt,status,user,type}){
         id = parseInt(id);
-        return new Task({id,title,description,createdAt,duration, predictedTime, history, deliveryForecast,deliveredAt,status,user,type})
+        return new Task({id,title,description, priority,planningType, createdAt,duration, predictedTime, history, deliveryForecast,deliveredAt,status,user,type})
 
     }
 }

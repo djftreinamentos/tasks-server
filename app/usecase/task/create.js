@@ -14,8 +14,8 @@ class CreateTaskUseCase{
          task = await this.taskService.insert(task);
         return task;
     }
-    async createTask({title,description,createdAt,duration, predictedTime, history, deliveryForecast,deliveredAt,status,user,type}){
-        return new Task({title,description,createdAt,duration, predictedTime, history, deliveryForecast,deliveredAt,status,user,type})
+    async createTask({title,description,priority,planningType,createdAt,duration, predictedTime, history, deliveryForecast,deliveredAt,status,user,type}){
+        return new Task({title,description,priority,planningType,createdAt,duration, predictedTime, history, deliveryForecast,deliveredAt,status,user,type})
 
     }
 }

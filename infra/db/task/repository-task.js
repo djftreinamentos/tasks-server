@@ -5,6 +5,8 @@ let tasks = [
         title:'Tela de login My-Task',
         description:'Criar a a tela de login para o app My-Task',
         createdAt:moment('2021-06-02').toDate(),
+        priority:'HIGH',
+        planningType:'PLANNED',
         duration:2,
         predictedTime:2,
         history:[],
@@ -24,6 +26,8 @@ let tasks = [
         createdAt:moment('2021-06-02').toDate(),
         duration:2,
         predictedTime:2,
+        priority:'MEDIUM',
+        planningType:'NOT_PLANNED',
         history:[{
             createdAt:moment('2021-06-09').toDate(),
             user:{id:1, name:"João"},

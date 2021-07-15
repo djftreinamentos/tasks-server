@@ -17,9 +17,9 @@ class TaskController {
     async insert(req, res, next) {
     
         const { currentUser} = req;
-        const {title,description,createdAt,duration, predictedTime, history, deliveryForecast,deliveredAt,status,user,type} = req.body;
+        const {title,description, priority,planningType, createdAt,duration, predictedTime, history, deliveryForecast,deliveredAt,status,user,type} = req.body;
         const useCase = new CreateTaskUseCase({ permissionService: this.permissionService, taskService: this.taskService});
-        const result = await useCase.execute({title,description,createdAt,duration, predictedTime, history, deliveryForecast,deliveredAt,status,user,type});
+        const result = await useCase.execute({title,description, priority,planningType, createdAt,duration, predictedTime, history, deliveryForecast,deliveredAt,status,user,type});
         if (result) {
             res.json(result)
         } else {
@@ -31,9 +31,9 @@ class TaskController {
     
         const { currentUser} = req;
         const {id} = req.params;
-        const {title,description,createdAt,duration, predictedTime, history, deliveryForecast,deliveredAt,status,user,type} = req.body;
+        const {title,description,priority,planningType,createdAt,duration, predictedTime, history, deliveryForecast,deliveredAt,status,user,type} = req.body;
         const useCase = new UpdateTaskUseCase({ permissionService: this.permissionService, taskService: this.taskService });
-        const result = await useCase.execute({currentUser,id,title,description,createdAt,duration, predictedTime, history, deliveryForecast,deliveredAt,status,user,type});
+        const result = await useCase.execute({currentUser,id,title,description,priority,planningType,createdAt,duration, predictedTime, history, deliveryForecast,deliveredAt,status,user,type});
         if (result) {
             res.json(result)
         } else {
